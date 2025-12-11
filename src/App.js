@@ -43,14 +43,14 @@ const FormInput = (props) => (
     <input
         {...props}
         // Reduced padding for a tighter feel
-        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition duration-150 placeholder-gray-500 text-sm"
+        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition duration-150 placeholder-gray-500 text-sm"
     />
 );
 
 // --- COMPONENT 1: The Dynamic Shopping List Item (Updated with Budget) ---
 const ShoppingListItem = ({ index, item, onChange, onRemove, showBudgetError }) => {
     return (
-        <div className="flex flex-col gap-2 mb-3 p-3 bg-white rounded-xl shadow-md border border-gray-100 items-start">
+        <div className="flex flex-col gap-2 mb-3 p-3 bg-white rounded-lg  items-start">
             {/* Item Name and Remove Button: Reduced gap */}
             <div className='flex w-full gap-2'>
                 {/* Item Name Input */}
@@ -60,14 +60,14 @@ const ShoppingListItem = ({ index, item, onChange, onRemove, showBudgetError }) 
                     placeholder="E.g., Laptop charger, Tomatoes" 
                     value={item.item}
                     onChange={(e) => onChange(index, 'item', e.target.value)}
-                    className="flex-grow w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 text-sm"
+                    className="flex-grow w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37] text-sm"
                     required
                 />
                 {/* Remove Button - Reduced padding/size */}
                 <button
                     type="button"
                     onClick={() => onRemove(index)}
-                    className="bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600 transition duration-150 flex-shrink-0 font-semibold text-xs"
+                    className="bg-black text-white px-3 py-2 rounded-lg hover:bg-[#D4AF37] transition duration-150 flex-shrink-0 font-semibold text-xs"
                 >
                     X
                 </button>
@@ -83,7 +83,7 @@ const ShoppingListItem = ({ index, item, onChange, onRemove, showBudgetError }) 
                         placeholder="Qty"
                         value={item.quantity}
                         onChange={(e) => onChange(index, 'quantity', e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded-lg text-center focus:ring-2 focus:ring-orange-500 text-sm"
+                        className="w-full p-2 border border-gray-300 rounded-lg text-center focus:ring-2 focus:ring-[#D4AF37] text-sm"
                         required
                     />
                 </div>
@@ -94,7 +94,7 @@ const ShoppingListItem = ({ index, item, onChange, onRemove, showBudgetError }) 
                         name={`list[${index}][unit]`}
                         value={item.unit}
                         onChange={(e) => onChange(index, 'unit', e.target.value)}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white text-sm"
+                        className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] bg-white text-sm"
                         required
                     >
                         <option value="pcs">Pcs</option>
@@ -113,7 +113,7 @@ const ShoppingListItem = ({ index, item, onChange, onRemove, showBudgetError }) 
                         placeholder="Budget"
                         value={item.budget || ''}
                         onChange={(e) => onChange(index, 'budget', e.target.value)}
-                        className={`w-full p-2 border rounded-lg text-center focus:ring-2 focus:ring-orange-500 text-sm ${showBudgetError && (!item.budget || Number(item.budget) <= 0) ? 'border-red-500 ring-red-300' : 'border-gray-300'}`}
+                        className={`w-full p-2 border rounded-lg text-center focus:ring-2 focus:ring-[#D4AF37] text-sm ${showBudgetError && (!item.budget || Number(item.budget) <= 0) ? 'border-red-500 ring-red-300' : 'border-gray-300'}`}
                         min="0"
                     />
                 </div>
@@ -292,7 +292,7 @@ const OrderForm = ({ navigate }) => {
     if (isSubmitted) {
         if (pricingMode === 'budget') {
             return (
-                <div className="container mx-auto py-12 px-4 text-center bg-white rounded-xl shadow-2xl max-w-2xl mt-6">
+                <div className="container mx-auto py-12 px-4 text-center bg-white rounded-lg max-w-2xl mt-6">
                     <h2 className="text-3xl font-extrabold text-green-600 mb-3">Redirecting to Payment...</h2>
                     <p className="text-lg text-gray-700">Your total of **NGN {finalAmount.toLocaleString()}** is ready for instant payment (includes all fees).</p>
                 </div>
@@ -301,8 +301,8 @@ const OrderForm = ({ navigate }) => {
 
         // Quote Later success message
         return (
-             <div className="container mx-auto py-12 px-4 text-center bg-white rounded-xl shadow-2xl max-w-2xl mt-6">
-                 <h2 className="text-3xl font-extrabold text-orange-600 mb-3">✅ List Received!</h2>
+             <div className="container mx-auto py-12 px-4 text-center bg-white rounded-lg max-w-2xl mt-6">
+                 <h2 className="text-3xl font-extrabold text-[#D4AF37] mb-3">✅ List Received!</h2>
                  <p className="text-lg text-gray-700">Thank you, <span className="font-semibold">{clientInfo.name}</span>. Your list is now with your shopper.</p>
                  <p className="mt-4 text-base text-gray-600 border-t pt-3">We will contact you at <span className="font-mono text-green-700">{clientInfo.phone}</span> with the final quote (including fees and transport) shortly.</p>
                  <button 
@@ -318,10 +318,10 @@ const OrderForm = ({ navigate }) => {
     return (
         <form onSubmit={handleSubmit} action={FORMSPREE_ENDPOINT} method="POST">
             {/* Reduced overall container padding */}
-            <div className="max-w-4xl mx-auto bg-white p-4 md:p-8 rounded-3xl shadow-2xl border border-gray-100">
+            <div className="max-w-4xl mx-auto bg-white p-4 md:p-8 rounded-3xl ">
                 
                 {/* Section 1: Delivery Details & Preferences */}
-                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-orange-100 pb-2">1. Delivery Details & Preferences</h2>
+                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-[#D4AF37] pb-2">1. Delivery Details & Preferences</h2>
                 
                 {/* Reduced gap- and mb- */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
@@ -355,7 +355,7 @@ const OrderForm = ({ navigate }) => {
                             name="shoppingType"
                             value={shoppingType}
                             onChange={(e) => setShoppingType(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white text-sm"
+                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] bg-white text-sm"
                             required
                         >
                             {SHOPPING_TYPES.map(type => (
@@ -368,7 +368,7 @@ const OrderForm = ({ navigate }) => {
                 {/* NEW: Alternative Contact Section */}
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 pt-3 border-t border-gray-100'>
                     <div className='sm:col-span-2'>
-                        <h3 className='text-sm font-extrabold text-orange-600 mb-2'>
+                        <h3 className='text-sm font-extrabold text-[#D4AF37] mb-2'>
                             Alternative/Emergency Contact (In case the primary client is unreachable)
                         </h3>
                     </div>
@@ -397,26 +397,26 @@ const OrderForm = ({ navigate }) => {
                             name="deliveryPriority"
                             value={selectedPriority}
                             onChange={(e) => setSelectedPriority(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white text-sm"
+                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] bg-white text-sm"
                         >
                             <option value="standard">Standard (NGN 0)</option>
                             <option value="priority">Priority (NGN 5,000)</option>
                         </select>
-                        <p className='text-xs text-gray-500 mt-1'>
+                        <p className='text-xs text-[#D4AF37] mt-1'>
                             Priority offers the fastest available shopper dispatch and delivery.
                         </p>
                     </div>
 
                     {/* Delivery Location Zone Select (Mandatory for Instant Pay) */}
                     <div>
-                        <label className={`block text-xs font-medium text-gray-700 mb-1 ${pricingMode === 'budget' ? 'text-red-600 font-extrabold' : ''}`}>
+                        <label className={`block text-xs font-medium text-gray-700 mb-1 ${pricingMode === 'budget' ? 'text-[#D4AF37] font-extrabold' : ''}`}>
                             {pricingMode === 'budget' ? '* Select Delivery Zone for Transport Fee' : 'Estimated Delivery Zone'}
                         </label>
                         <select
                             name="deliveryLocationZone"
                             value={selectedZone}
                             onChange={(e) => setSelectedZone(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white text-sm"
+                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] bg-white text-sm"
                             required={pricingMode === 'budget'}
                         >
                             {Object.entries(LAGOS_TRANSPORT_FEES).map(([zone, fee]) => (
@@ -432,17 +432,17 @@ const OrderForm = ({ navigate }) => {
                 </div>
                 
                 {/* Section 2: Pricing Mode */}
-                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-orange-100 pb-2">2. Choose Your Payment Method</h2>
+                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-[#D4AF37] pb-2">2. Choose Your Payment Method</h2>
                 {/* Reduced gap and padding */}
                 <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                    <label className={`flex-1 flex items-start p-3 rounded-xl cursor-pointer transition duration-200 border-2 ${pricingMode === 'budget' ? 'bg-green-50 border-green-500 ring-2 ring-green-100' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
+                    <label className={`flex-1 flex items-start p-3 rounded-xl cursor-pointer transition duration-200 border-2 ${pricingMode === 'budget' ? 'bg-[#D4AF37]/50 border-[#D4AF37] ring-2 ring-[#D4AF37]' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
                         <input 
                             type="radio" 
                             name="pricingMode" 
                             value="budget" 
                             checked={pricingMode === 'budget'} 
                             onChange={() => setPricingMode('budget')} 
-                            className="w-4 h-4 mt-1 mr-2 appearance-none border-2 rounded-full checked:bg-green-600 checked:border-green-600 focus:outline-none flex-shrink-0"
+                            className="w-4 h-4 mt-1 mr-2 appearance-none border-2 rounded-full checked:bg-[#D4AF37] checked:border-[#D4AF37] focus:outline-none flex-shrink-0"
                             required
                         />
                         <div>
@@ -458,7 +458,7 @@ const OrderForm = ({ navigate }) => {
                             value="quote" 
                             checked={pricingMode === 'quote'} 
                             onChange={() => setPricingMode('quote')} 
-                            className="w-4 h-4 mt-1 mr-2 appearance-none border-2 rounded-full checked:bg-orange-600 checked:border-orange-600 focus:outline-none flex-shrink-0"
+                            className="w-4 h-4 mt-1 mr-2 appearance-none border-2 rounded-full checked:bg-[#D4AF37] checked:border-[#D4AF37] focus:outline-none flex-shrink-0"
                             required
                         />
                         <div>
@@ -469,7 +469,7 @@ const OrderForm = ({ navigate }) => {
                 </div>
                 
                 {/* Section 3: Shopping List */}
-                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-orange-100 pb-2">3. Create Shopping List</h2>
+                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-[#D4AF37] pb-2">3. Create Shopping List</h2>
                 
                 {/* Shopping List Items */}
                 {shoppingList.map((item, index) => (
@@ -532,18 +532,18 @@ const OrderForm = ({ navigate }) => {
                 )}
                 
                 {/* Section 4: Additional Notes */}
-                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-orange-100 pb-2">4. Additional Notes</h2>
+                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-[#D4AF37] pb-2">4. Additional Notes</h2>
                 <textarea 
                     name="notes"
                     placeholder="E.g., 'Please buy the blue version of the kettle', 'If item A is unavailable, buy item B instead'." 
-                    className="w-full p-3 border border-gray-300 rounded-lg mb-6 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-150" rows="2"
+                    className="w-full p-3 border border-gray-300 rounded-lg mb-6 text-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition duration-150" rows="2"
                 ></textarea>
 
                 {/* Submit Button (Updated with finalAmount) */}
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-orange-600 text-white text-lg font-extrabold py-4 rounded-xl hover:bg-orange-700 transition duration-300 shadow-xl shadow-orange-300 disabled:bg-gray-400 disabled:shadow-none"
+                    className="w-full bg-black text-white text-lg font-extrabold py-4 rounded-xl hover:bg-[#D4AF37] transition duration-300  disabled:bg-gray-400 disabled:shadow-none"
                 >
                     {pricingMode === 'budget' 
                         ? `Pay NGN ${finalCostDetails.finalAmount.toLocaleString()} Now`
@@ -596,7 +596,7 @@ const PaymentPage = ({ navigate, initialEmail = '', initialAmount = '' }) => {
         // Reduced padding and margin-top 
         <div className="max-w-md mx-auto bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 mt-6">
             {/* Reduced h2 size, mb- and pb- */}
-            <h2 className="text-2xl font-extrabold text-green-600 mb-4 border-b-2 border-green-100 pb-2 text-center">💳 Secure Payment</h2>
+            <h2 className="text-2xl font-extrabold text-green-600 mb-4 border-b-2 border-green-100 pb-2 text-center">Secure Payment</h2>
             {/* Reduced mb- and text-size */}
             <p className="text-gray-600 mb-6 text-center text-sm">
                 Complete your payment securely via Paystack.
@@ -613,7 +613,7 @@ const PaymentPage = ({ navigate, initialEmail = '', initialAmount = '' }) => {
                     className="w-full p-3 border-4 border-green-400 rounded-xl text-2xl font-extrabold text-center focus:outline-none focus:ring-4 focus:ring-green-300 transition duration-150"
                     required
                 />
-                {initialAmount && <p className='text-xs text-green-600 mt-1 text-center font-medium'>* This amount is pre-filled from your total item budget + fees.</p>}
+                {initialAmount && <p className='text-xs text-green-600 mt-1 text-center font-medium'>This amount is pre-filled from your total item budget + fees.</p>}
             </div>
             {/* Reduced mb- */}
             <div className="mb-4">
@@ -623,10 +623,10 @@ const PaymentPage = ({ navigate, initialEmail = '', initialAmount = '' }) => {
                     value={clientEmail}
                     onChange={(e) => setClientEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-150 text-sm"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition duration-150 text-sm"
                     required
                 />
-                {initialEmail && <p className='text-xs text-gray-500 mt-1'>* Email is pre-filled from your order details.</p>}
+                {initialEmail && <p className='text-xs text-gray-500 mt-1'>Email is pre-filled from your order details.</p>}
             </div>
             {/* Reduced mb- */}
             <div className="mb-6">
@@ -636,7 +636,7 @@ const PaymentPage = ({ navigate, initialEmail = '', initialAmount = '' }) => {
                     value={reference}
                     onChange={(e) => setReference(e.target.value)}
                     placeholder="Enter reference sent by shopper (if any)"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-150 text-sm"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition duration-150 text-sm"
                 />
             </div>
 
@@ -652,7 +652,7 @@ const PaymentPage = ({ navigate, initialEmail = '', initialAmount = '' }) => {
             {/* Reduced mt- and text-size */}
             <button 
                 onClick={() => navigate('order')}
-                className="mt-4 w-full text-xs text-gray-500 hover:text-orange-600 transition font-semibold"
+                className="mt-4 w-full text-xs text-gray-500 hover:text-[#D4AF37] transition font-semibold"
             >
                 Back to Order Form
             </button>
@@ -718,46 +718,46 @@ export default function MarketShopperApp() {
                         {/* Reduced gap */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {/* Step 1: Choose Price Mode */}
-                            <div className="p-4 rounded-xl bg-green-50 shadow-lg border-t-4 border-green-500 hover:shadow-xl transition duration-300">
+                            <div className="p-4 rounded-xl bg-white   hover:shadow-xl transition duration-300">
                                 {/* Reduced icon size and mb- */}
                                 <div className="flex items-center mb-2">
-                                    <div className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-base font-bold flex-shrink-0">
+                                    <div className="bg-black text-white rounded-lg w-8 h-8 flex items-center justify-center text-base font-bold flex-shrink-0">
                                         1
                                     </div>
                                     <h3 className="text-lg font-bold ml-2 text-gray-800">Choose Price Mode</h3>
                                 </div>
                                 {/* Reduced text size and mt- */}
-                                <p className="text-sm opacity-90 text-gray-700 mt-1">
-                                    Select **Client Budget (Instant Pay)** for immediate payment, or **Shopper Sourced Price** for a quote later.
+                                <p className="text-sm opacity-90 text-black mt-1">
+                                    Select Client Budget (Instant Pay) for immediate payment, or Shopper Sourced Price for a quote later.
                                 </p>
                             </div>
                             
                             {/* Step 2: Confirm Payment */}
-                            <div className="p-4 rounded-xl bg-orange-50 shadow-lg border-t-4 border-orange-500 hover:shadow-xl transition duration-300">
+                            <div className="p-4 rounded-xl bg-white   hover:shadow-xl transition duration-300">
                                 {/* Reduced icon size and mb- */}
                                 <div className="flex items-center mb-2">
-                                    <div className="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-base font-bold flex-shrink-0">
+                                    <div className="bg-black text-white rounded-lg w-8 h-8 flex items-center justify-center text-base font-bold flex-shrink-0">
                                         2
                                     </div>
                                     <h3 className="text-lg font-bold ml-2 text-gray-800">Confirm Payment</h3>
                                 </div>
                                 {/* Reduced text size and mt- */}
-                                <p className="text-sm opacity-90 text-gray-700 mt-1">
-                                    If **Instant Pay**, you pay the calculated total (including fees). If **Quote Later**, a shopper contacts you with the final bill.
+                                <p className="text-sm opacity-90 text-black mt-1">
+                                    If Instant Pay, you pay the calculated total (including fees). If Quote Later, a shopper contacts you with the final bill.
                                 </p>
                             </div>
                             
                             {/* Step 3: Delivery */}
-                            <div className="p-4 rounded-xl bg-gray-50 shadow-lg border-t-4 border-gray-500 hover:shadow-xl transition duration-300">
+                            <div className="p-4 rounded-xl bg-white   hover:shadow-xl transition duration-300">
                                 {/* Reduced icon size and mb- */}
                                 <div className="flex items-center mb-2">
-                                    <div className="bg-gray-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-base font-bold flex-shrink-0">
+                                    <div className="bg-black text-white rounded-lg w-8 h-8 flex items-center justify-center text-base font-bold flex-shrink-0">
                                         3
                                     </div>
                                     <h3 className="text-lg font-bold ml-2 text-gray-800">Delivery</h3>
                                 </div>
                                 {/* Reduced text size and mt- */}
-                                <p className="text-sm opacity-90 text-gray-700 mt-1">
+                                <p className="text-sm opacity-90 text-black mt-1">
                                     Your shopper purchases your items and delivers them promptly at your specified time.
                                 </p>
                             </div>
@@ -772,11 +772,11 @@ export default function MarketShopperApp() {
         // ADDED font-mono class for a techy, digital look
         <div className="min-h-screen bg-gray-50 font-mono">
             {/* Header Section (Logo only - reduced vertical padding) */}
-            <header className="bg-white shadow sticky top-0 z-20">
+            <header className="bg-white  sticky top-0 z-20">
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
                     {/* Logo (Reduced text size) */}
                     <div className="text-2xl font-extrabold cursor-pointer" onClick={() => navigate('order')}>
-                        🛒 Market<span className="text-orange-600">Shopper</span>
+                        Honey<span className="text-[#D4AF37]">Shopper</span>
                     </div>
                     {/* Reduced padding and text size */}
                     <button 
@@ -793,13 +793,13 @@ export default function MarketShopperApp() {
             </main>
 
             {/* Footer Section */}
-            <footer className="bg-gray-900 text-white py-4 mt-6">
+            <footer className="bg-white text-black py-4 mt-6">
                 <div className="container mx-auto text-center px-4">
                     {/* Emergency Contact (General Support) */}
                     <div className='border-b border-gray-700 pb-2 mb-2'>
-                        <p className='text-xs font-semibold text-red-400'>
-                            <span className='mr-1'>🚨</span>General Support: 
-                            <a href={`tel:${EMERGENCY_CONTACT_NUMBER}`} className='hover:text-red-300 ml-1 underline'>
+                        <p className='text-xs font-semibold '>
+                            <span className='mr-1 '></span>General Support: 
+                            <a href={`tel:${EMERGENCY_CONTACT_NUMBER}`} className='text-[#D4AF37] hover:text-black ml-1 underline'>
                                 {EMERGENCY_CONTACT_NUMBER}
                             </a>
                         </p>
@@ -807,7 +807,7 @@ export default function MarketShopperApp() {
 
                     {/* Reduced text size and mb- */}
                     <div className="text-lg font-extrabold mb-0.5">
-                        Market<span className="text-orange-500">Shopper</span>
+                        Market<span className="text-[#D4AF37]">Shopper</span>
                     </div>
                     {/* Reduced text size */}
                     <p className="text-xs opacity-80">
