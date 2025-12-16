@@ -47,19 +47,19 @@ const ProductPriceChecker = ({
     }, [selectedCategory, searchTerm]);
 
     return (
-        <section className="py-8 bg-gray-50" id="product-price-list">
+        <section className="py-8 bg-white" id="product-price-list">
             <div className="container mx-auto px-4 max-w-4xl">
                 <h2 className="text-2xl font-extrabold text-center text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
-                    Estimated Product Price List <FaSearch className='inline text-sm ml-2 text-[#D4AF37]'/>
+                    Estimated Product Price List 
                 </h2>
                 <p className="text-sm text-center text-gray-600 mb-6">
-                    Showing results for **{selectedCategory}** and search term **"{searchTerm || 'All'}"**. <span className="font-semibold text-red-500">Prices are subject to market fluctuations.</span>
+                    Showing results for {selectedCategory} and search term "{searchTerm || 'All'}". <span className="font-semibold text-red-500">Prices are subject to market fluctuations.</span>
                 </p>
 
                 {/* --- REMOVED: Controls (Category Select & Search Input) are now in PriceSearchBar.js --- */}
 
                 {/* Price Table/List */}
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
                     <div className="p-4 bg-black text-white font-bold grid grid-cols-10 text-xs sm:text-sm uppercase">
                         <span className="col-span-4">Item</span>
                         <span className="col-span-3 text-right">Estimated Price</span>

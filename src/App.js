@@ -53,7 +53,6 @@ const EMERGENCY_CONTACT_NUMBER = '0800-SHOPPER';
 // SOCIAL MEDIA LINKS
 const SOCIAL_LINKS = [
     { name: 'Instagram', url: 'https://instagram.com/honeyshopper', Icon: FaInstagram },
-    { name: 'Twitter', url: 'https://twitter.com/honeyshopper', Icon: FaTwitter },
     { name: 'WhatsApp', url: 'https://wa.me/2348007467737', Icon: FaWhatsapp },
     { name: 'TikTok', url: 'https://www.tiktok.com/@honeyshopper', Icon: FaTiktok },
 ];
@@ -679,7 +678,7 @@ Choose Your Payment Method</h2>
                 {/* Reduced gap and padding */}
                 <div className="flex flex-col sm:flex-row gap-3 mb-6">
                     <label className={`flex-1 flex items-start p-3 rounded-xl cursor-pointer transition duration-200 border-2 ${pricingMode === 'budget' ?
-'bg-[#D4AF37]/50 border-[#D4AF37] ring-2 ring-[#D4AF37]' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
+'bg-[#D4AF37]/10 border-[#D4AF37] ring-2 ring-[#D4AF37]/10' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
                         <input 
                             type="radio" 
                             name="pricingMode" 
@@ -688,7 +687,7 @@ Choose Your Payment Method</h2>
                             checked={pricingMode === 'budget'}
                             onChange={() => setPricingMode('budget')}
                    
-                          className="w-4 h-4 mt-1 mr-2 appearance-none border-2 rounded-full checked:bg-[#D4AF37] checked:border-[#D4AF37] focus:outline-none flex-shrink-0"
+                          className="w-4 h-4 mt-1 mr-2 appearance-none border-2 rounded-full checked:bg-[#D4AF37] checked:border-[#D4AF37]/10 focus:outline-none flex-shrink-0"
                             required
                             aria-label="Client Budget (Instant Pay) mode"
                         />
@@ -701,7 +700,7 @@ Choose Your Payment Method</h2>
                     </label>
 
                     <label className={`flex-1 flex items-start p-3 rounded-xl cursor-pointer transition duration-200 border-2 ${pricingMode === 'quote' ?
-'bg-orange-50 border-orange-500 ring-2 ring-orange-100' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
+'bg-[#D4AF37]/10 border-[#D4AF37] ring-2 ring-orange-100' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
                         <input 
                             type="radio" 
                             name="pricingMode" 
@@ -710,7 +709,7 @@ Choose Your Payment Method</h2>
                             checked={pricingMode === 'quote'}
                             onChange={() => setPricingMode('quote')}
                    
-                          className="w-4 h-4 mt-1 mr-2 appearance-none border-2 rounded-full checked:bg-[#D4AF37] checked:border-[#D4AF37] focus:outline-none flex-shrink-0"
+                          className="w-4 h-4 mt-1 mr-2 appearance-none border-2 rounded-full checked:bg-[#D4AF37] checked:border-[#D4AF37]/10 focus:outline-none flex-shrink-0"
                             required
                             aria-label="Shopper Sourced Price (Quote Later) mode"
                         />
@@ -757,8 +756,8 @@ Create Shopping List</h2>
                 {/* Total Cost Breakdown Display */}
                 {pricingMode === 'budget' && finalCostDetails.finalAmount > 0 && (
              
-                <div className='p-4 mb-6 bg-green-100 rounded-xl border-2 border-green-500' role="region" aria-label="Instant Payment Cost Breakdown">
-                        <h3 className='text-lg font-extrabold text-green-800 mb-2 border-b border-green-300 pb-1'>
+                <div className='p-4 mb-6 bg-[#D4AF37]/10 rounded-xl border-2 border-[#D4AF37]' role="region" aria-label="Instant Payment Cost Breakdown">
+                        <h3 className='text-lg font-extrabold text-black mb-2 border-b border-[#D4AF37]/30 pb-1'>
                             Estimated Instant Payment Breakdown
                         </h3>
  
@@ -793,7 +792,7 @@ Zone)</span>
     
                             </div>
 
-                            <div className='flex justify-between pt-2 border-t border-green-300 font-extrabold text-lg text-green-700'>
+                            <div className='flex justify-between pt-2 border-t border-[#D4AF37]/30 font-extrabold text-lg text-black'>
                                 <span>TOTAL DUE NOW</span>
       
                                 <span>NGN {finalCostDetails.finalAmount.toLocaleString()}</span>
@@ -861,10 +860,9 @@ const FeePriceListSection = () => {
                     {FEE_PRICES.map((fee, index) => (
                         <div 
                             key={index} 
-                            className="p-6 bg-gray-50 rounded-xl shadow-md border-t-4 border-[#D4AF37] transition hover:shadow-lg"
+                            className="p-6 bg-gray-50   border-t-2 border-[#D4AF37] transition hover:shadow-sm"
                         >
                             <div className="flex items-center mb-3">
-                                <fee.icon className="text-xl text-black mr-3" />
                                 <h3 className="text-lg font-bold text-gray-800">{fee.service}</h3>
                             </div>
                             <p className="text-2xl font-extrabold text-black mb-2">{fee.rate}</p>
@@ -877,25 +875,8 @@ const FeePriceListSection = () => {
     );
 };
 
-const PriceCheckPage = () => {
-    return (
-        <div className="mt-8">
-            <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-8">
-                Pricing & Fee Guide
-            </h1>
-            {/* Pass state and setters down to the checker */}
-            <ProductPriceChecker 
-                selectedCategory={selectedPriceCategory} 
-                searchTerm={priceSearchTerm} 
-                setSelectedCategory={setSelectedPriceCategory} // Pass setter if you want controls inside the checker
-                setSearchTerm={setPriceSearchTerm}             // Pass setter if you want controls inside the checker
-            /> 
-            <FeePriceListSection /> 
-        </div>
-    );
-};
 
-// --- COMPONENT 3: Payment Widget ---
+// --- COMPONENT 3: Payment Widget --
 const PaymentPage = ({ navigate, initialEmail = '', initialAmount = '', showToast, isPaystackLoaded }) => {
     const [amount, setAmount] = useState(initialAmount);
     const [clientEmail, setClientEmail] = useState(initialEmail);
@@ -1196,7 +1177,7 @@ const TESTIMONIALS = [
 ];
 
 const TestimonialsSection = () => (
-    <section className="py-12 sm:py-16 bg-gray-100" role="region" aria-labelledby="testimonials-heading">
+    <section className="py-12 sm:py-16 bg-white" role="region" aria-labelledby="testimonials-heading">
         <div className="container mx-auto px-4">
             <h2 id="testimonials-heading" className="text-3xl font-extrabold text-center text-gray-800 mb-10 border-b-2 border-[#D4AF37] inline-block mx-auto pb-2">
                 What Our Clients Say
@@ -1206,7 +1187,7 @@ const TestimonialsSection = () => (
                 {TESTIMONIALS.map((t, index) => (
                     <div 
                         key={index} 
-                        className="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[#D4AF37] hover:shadow-xl transition duration-300 transform hover:scale-[1.02] relative"
+                        className="bg-white p-6  border-b-2 border-[#D4AF37] hover:shadow-sm transition duration-300 transform hover:scale-[1.02] relative"
                         role="testimonial"
                     >
                         <blockquote className="italic text-gray-600 mb-4 text-base">
@@ -1218,9 +1199,6 @@ const TestimonialsSection = () => (
                         <p className="text-xs text-gray-500">
                             {t.location}
                         </p>
-                        <div className="text-xl text-[#D4AF37] absolute top-4 right-4" aria-hidden="true">
-                            ★
-                        </div>
                     </div>
                 ))}
             </div>
@@ -1302,34 +1280,34 @@ const LegalPage = () => (
             Terms of Service & Privacy Policy
         </h2>
 
-        <div className='bg-white p-8 rounded-xl shadow-lg mt-8 space-y-6'>
+        <div className='bg-white p-8 rounded-xl shadow-sm mt-8 space-y-6'>
             <section className='space-y-3' role="region" aria-labelledby="tos-heading">
                 <h3 id="tos-heading" className="text-2xl font-bold text-gray-700 flex items-center">
-                    <FaGavel className='mr-2 text-[#D4AF37]' aria-hidden="true" /> Terms of Service (TOS)
+                     Terms of Service (TOS)
                 </h3>
                 <p className='text-sm text-gray-600'>
-                    **1. Acceptance of Terms:** By using the HoneyShopper service, you agree to be bound by these Terms of Service. If you disagree with any part of the terms, then you may not access the service.
+                    1. Acceptance of Terms: By using the HoneyShopper service, you agree to be bound by these Terms of Service. If you disagree with any part of the terms, then you may not access the service.
                 </p>
                 <p className='text-sm text-gray-600'>
-                    **2. Service Fees:** All service fees, including the Base Shopper Fee, Service Fee (10%), Priority Fee, and Transport Fee, are non-refundable once the purchasing process has begun.
+                    2. Service Fees: All service fees, including the Base Shopper Fee, Service Fee (10%), Priority Fee, and Transport Fee, are non-refundable once the purchasing process has begun.
                 </p>
                 <p className='text-sm text-gray-600'>
-                    **3. Liability:** HoneyShopper is responsible for purchasing the correct items as specified in the order list. We are not liable for the quality of perishable goods after successful delivery or for manufacturer defects.
+                    3. Liability: HoneyShopper is responsible for purchasing the correct items as specified in the order list. We are not liable for the quality of perishable goods after successful delivery or for manufacturer defects.
                 </p>
             </section>
 
             <section className='space-y-3 pt-4 border-t border-gray-100' role="region" aria-labelledby="privacy-heading">
                 <h3 id="privacy-heading" className="text-2xl font-bold text-gray-700 flex items-center">
-                    <FaGavel className='mr-2 text-[#D4AF37]' aria-hidden="true" /> Privacy Policy
+                     Privacy Policy
                 </h3>
                 <p className='text-sm text-gray-600'>
-                    **1. Information Collection:** We collect personal information such as your name, email, phone number, and delivery address solely for the purpose of processing and delivering your order. Payment information is handled securely by Paystack and is not stored by HoneyShopper.
+                    1. Information Collection: We collect personal information such as your name, email, phone number, and delivery address solely for the purpose of processing and delivering your order. Payment information is handled securely by Paystack and is not stored by HoneyShopper.
                 </p>
                 <p className='text-sm text-gray-600'>
-                    **2. Data Usage:** Your contact information may be shared with the designated shopper for direct communication regarding your order (e.g., out-of-stock items). We do not sell your data to third parties.
+                    2. Data Usage: Your contact information may be shared with the designated shopper for direct communication regarding your order (e.g., out-of-stock items). We do not sell your data to third parties.
                 </p>
                 <p className='text-sm text-gray-600'>
-                    **3. Consent:** By submitting an order, you consent to the collection and use of information in accordance with this policy.
+                    3. Consent: By submitting an order, you consent to the collection and use of information in accordance with this policy.
                 </p>
             </section>
         </div>
@@ -1350,13 +1328,13 @@ export default function MarketShopperApp() {
     const [showIntro, setShowIntro] = useState(true); 
     const [toast, setToast] = useState({ message: '', type: 'success', visible: false });
     // NEW: State to track if the Paystack script has been loaded
-    const [isPaystackLoaded, setIsPaystackLoaded] = useState(false); 
-    
-    // --- NEW PRICE CHECKER STATE ---
-    const initialCategory = 'General Groceries'; // Must match a key in your price data
-    const [selectedPriceCategory, setSelectedPriceCategory] = useState(initialCategory);
+    const [isPaystackLoaded, setIsPaystackLoaded] = useState(false); // --- FIX: Declaring the missing state variables for the Price Checker ---
+    const [selectedPriceCategory, setSelectedPriceCategory] = useState('General Groceries');
     const [priceSearchTerm, setPriceSearchTerm] = useState('');
-    // -------------------------------
+    // ----------------------------------------------------------------------
+    
+    
+    
     
     // Function to trigger the toast
     const showToast = useCallback((message, type = 'success') => {
@@ -1434,26 +1412,36 @@ export default function MarketShopperApp() {
             return <LegalPage />;
         }
         
-        // --- FIXED ROUTE INTEGRATION: Price Page ---
+       // --- FIXED ROUTE INTEGRATION: Price Page (Direct JSX Return) --
         if (page === 'prices') {
             return (
-                <div className="mt-8">
+                <div className="mt-8 bg-white">
                     <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-8">
                         Pricing & Fee Guide
                     </h1>
-                    {/* The ProductPriceChecker now uses the state variables directly from the MarketShopperApp scope */}
+                    
+                    {/* Include PriceSearchBar so users can change filters on this page */}
+                    <PriceSearchBar 
+                        selectedCategory={selectedPriceCategory}
+                        setSelectedCategory={setSelectedPriceCategory}
+                        searchTerm={priceSearchTerm}
+                        setSearchTerm={setPriceSearchTerm}
+                        navigate={navigate} 
+                    />
+
+                    {/* ProductPriceChecker now accesses state directly from MarketShopperApp's scope */}
                     <ProductPriceChecker 
                         selectedCategory={selectedPriceCategory} 
                         searchTerm={priceSearchTerm}             
                         setSelectedCategory={setSelectedPriceCategory} 
                         setSearchTerm={setPriceSearchTerm}             
                     /> 
-                    {/* Assuming FeePriceListSection is defined or imported globally */}
+                    
                     <FeePriceListSection /> 
                 </div>
             );
         }
-        // -----------------------------------------------------
+        // ---------------------------------------------------------------------
 
         // Default 'order' page content
         return (
@@ -1471,7 +1459,7 @@ export default function MarketShopperApp() {
                 />
 
                 {/* Main Content: The Order Form */}
-                <section id="order-form" className="py-8 sm:py-12 bg-gray-50">
+                <section id="order-form" className="py-8 sm:py-12 bg-white">
                             <div className="container mx-auto px-4">
                                 <OrderForm navigate={navigate} showToast={showToast} /> 
                             </div>
@@ -1486,7 +1474,7 @@ export default function MarketShopperApp() {
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {/* Step 1: Choose Price Mode */}
                                     
-                                    <div className="p-4 rounded-xl bg-white   hover:shadow-xl transition duration-300">
+                                    <div className="p-4   border-b-2 border-[#D4AF37] bg-white   hover:shadow-sm transition duration-300">
                                         {/* Reduced icon size and mb- */}
                                         <div className="flex items-center mb-2">
                             
@@ -1498,13 +1486,13 @@ export default function MarketShopperApp() {
                             
                                         {/* Reduced text size and mt- */}
                                         <p className="text-sm opacity-90 text-black mt-1">
-                                            Select **Client Budget (Instant Pay)** for immediate payment, or **Shopper Sourced Price** for a quote later.
+                                            Select Client Budget (Instant Pay) for immediate payment, or Shopper Sourced Price for a quote later.
                                         </p>
                                     </div>
                                     
                                     {/* Step 2: Confirm Payment */}
                         
-                                    <div className="p-4 rounded-xl bg-white   hover:shadow-xl transition duration-300">
+                                    <div className="p-4  border-b-2 border-[#D4AF37] bg-white   hover:shadow-sm transition duration-300">
                                         {/* Reduced icon size and mb- */}
                                         
                                         <div className="flex items-center mb-2">
@@ -1525,7 +1513,7 @@ export default function MarketShopperApp() {
                                     
                                     {/* Step 3: Delivery */}
                                 
-                                    <div className="p-4 rounded-xl bg-white   hover:shadow-xl transition duration-300">
+                                    <div className="p-4  border-b-2 border-[#D4AF37] bg-white   hover:shadow-sm transition duration-300">
                                         {/* Reduced icon size and mb- */}
                                         <div className="flex items-center mb-2">
                 
@@ -1559,7 +1547,7 @@ export default function MarketShopperApp() {
 
     return (
         // ADDED font-mono class for a techy, digital look
-        <div className="min-h-screen bg-gray-50 font-mono">
+        <div className="min-h-screen bg-white font-mono">
             {/* NEW: Metadata Tags Component (Now Dynamic) */}
             <MetadataTags page={page} />
 

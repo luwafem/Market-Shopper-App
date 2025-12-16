@@ -17,7 +17,6 @@ const PriceSearchBar = ({ selectedCategory, setSelectedCategory, searchTerm, set
         <section className="bg-white py-4 border-b border-gray-100 shadow-sm" id="price-search-bar">
             <div className="container mx-auto px-4 max-w-4xl">
                 <div className="flex flex-col sm:flex-row items-center gap-3">
-                    <FaSearch className='text-xl text-[#D4AF37] hidden sm:block'/>
                     
                     <div className="flex-1 w-full">
                          <label className='block text-xs font-semibold text-gray-700 mb-0.5'>Search Item Price</label>
@@ -45,7 +44,7 @@ const PriceSearchBar = ({ selectedCategory, setSelectedCategory, searchTerm, set
 
                     <button 
                         onClick={() => navigate('prices')}
-                        className="w-full sm:w-auto bg-black text-white px-6 py-2 rounded-lg text-sm font-semibold hover:bg-gray-800 transition shadow-md mt-2 sm:mt-0"
+                        className="w-full sm:w-auto bg-black text-white px-6 py-2 rounded-lg text-sm font-semibold hover:bg-gray-800 transition shadow-md mt-2 sm:mt-4"
                     >
                         Check Prices
                     </button>
