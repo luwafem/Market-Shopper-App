@@ -47,8 +47,6 @@ const PRIORITY_FEES = {
     'standard': 0,
     'priority': 5000,
 };
-// EMERGENCY CONTACT for general support (in footer)
-const EMERGENCY_CONTACT_NUMBER = '0800-SHOPPER';
 
 // SOCIAL MEDIA LINKS
 const SOCIAL_LINKS = [
@@ -756,7 +754,7 @@ Create Shopping List</h2>
                 {/* Total Cost Breakdown Display */}
                 {pricingMode === 'budget' && finalCostDetails.finalAmount > 0 && (
              
-                <div className='p-4 mb-6 bg-[#D4AF37]/10 rounded-xl border-2 border-[#D4AF37]' role="region" aria-label="Instant Payment Cost Breakdown">
+                <div className='p-4 mb-6 bg-[#D4AF37]/10 rounded-xl border-2 border-[#D4AF37]'  aria-label="Instant Payment Cost Breakdown">
                         <h3 className='text-lg font-extrabold text-black mb-2 border-b border-[#D4AF37]/30 pb-1'>
                             Estimated Instant Payment Breakdown
                         </h3>
@@ -1177,7 +1175,7 @@ const TESTIMONIALS = [
 ];
 
 const TestimonialsSection = () => (
-    <section className="py-12 sm:py-16 bg-white" role="region" aria-labelledby="testimonials-heading">
+    <section className="py-12 sm:py-16 bg-white"  aria-labelledby="testimonials-heading">
         <div className="container mx-auto px-4">
             <h2 id="testimonials-heading" className="text-3xl font-extrabold text-center text-gray-800 mb-10 border-b-2 border-[#D4AF37] inline-block mx-auto pb-2">
                 What Our Clients Say
@@ -1281,7 +1279,7 @@ const LegalPage = () => (
         </h2>
 
         <div className='bg-white p-8 rounded-xl shadow-sm mt-8 space-y-6'>
-            <section className='space-y-3' role="region" aria-labelledby="tos-heading">
+            <section className='space-y-3'  aria-labelledby="tos-heading">
                 <h3 id="tos-heading" className="text-2xl font-bold text-gray-700 flex items-center">
                      Terms of Service (TOS)
                 </h3>
@@ -1296,7 +1294,7 @@ const LegalPage = () => (
                 </p>
             </section>
 
-            <section className='space-y-3 pt-4 border-t border-gray-100' role="region" aria-labelledby="privacy-heading">
+            <section className='space-y-3 pt-4 border-t border-gray-100'  aria-labelledby="privacy-heading">
                 <h3 id="privacy-heading" className="text-2xl font-bold text-gray-700 flex items-center">
                      Privacy Policy
                 </h3>
@@ -1466,7 +1464,7 @@ export default function MarketShopperApp() {
                         </section>
                         
                         {/* How It Works Section */}
-                        <section className="py-8 sm:py-12 bg-white" role="region" aria-labelledby="how-it-works-heading">
+                        <section className="py-8 sm:py-12 bg-white"  aria-labelledby="how-it-works-heading">
                             <div className="container mx-auto px-4">
                                 <h2 id="how-it-works-heading" className="text-2xl font-extrabold text-center text-gray-800 mb-8 sm:mb-10">How It Works</h2>
                         
