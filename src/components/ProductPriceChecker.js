@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'; // Removed useState
-import { FaSearch } from 'react-icons/fa'; // Required icon
 
 // --- CONSTANT: Estimated Product Prices ---
 // This constant must be defined for the component to work

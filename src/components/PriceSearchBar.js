@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaSearch } from 'react-icons/fa';
 
 // NOTE: This constant must also be available in your main file, but 
 // for simplicity, we'll redefine the keys here, as they are part of the UI.

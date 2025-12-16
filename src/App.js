@@ -4,7 +4,7 @@ import PriceSearchBar from './components/PriceSearchBar';
 
 // --- CONFIGURATION CONSTANTS ---
 // ADDED ALL REQUIRED REACT ICONS HERE
-import { FaInstagram, FaTwitter, FaWhatsapp, FaTiktok, FaPhoneAlt, FaSpinner, FaCheckCircle, FaExclamationTriangle, FaQuestionCircle, FaGavel, FaShoppingCart, FaSearch, FaDollarSign } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp, FaTiktok, FaSpinner, FaCheckCircle, FaExclamationTriangle, FaQuestionCircle, FaGavel, FaShoppingCart, FaDollarSign } from 'react-icons/fa';
 // Ensure FaGavel and FaDollarSign are in this list.
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgvzwray';
