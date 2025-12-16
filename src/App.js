@@ -171,7 +171,7 @@ const ToastNotification = ({ message, type, isVisible, onClose }) => {
         <div 
             className={`${baseClasses} ${colorClasses} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             // Add role="alert" for accessibility
-            role="alert"
+            
         >
             <IconComponent className="mr-3 text-xl flex-shrink-0" />
             <div className='flex-grow text-sm'>{message}</div>
@@ -515,11 +515,11 @@ const OrderForm = ({ navigate, showToast }) => {
     return (
         <form onSubmit={handleSubmit} action={FORMSPREE_ENDPOINT} method="POST">
             {/* Reduced overall container padding */}
-            <div className="max-w-4xl mx-auto bg-white p-4 md:p-8 rounded-3xl relative" role="form" aria-label="HoneyShopper Order Form">
+            <div className="max-w-4xl mx-auto bg-white p-4 md:p-8 rounded-3xl relative"  aria-label="HoneyShopper Order Form">
                 
                 {/* NEW: Loading Overlay */}
                 {isSubmitting && (
-                    <div className="absolute inset-0 bg-black/50 z-30 flex items-center justify-center rounded-3xl" role="status" aria-label="Processing form submission">
+                    <div className="absolute inset-0 bg-black/50 z-30 flex items-center justify-center rounded-3xl"  aria-label="Processing form submission">
                         <FaSpinner className="animate-spin text-5xl text-[#D4AF37]" />
                         <p className='text-white ml-4 text-lg font-bold'>Processing...</p>
                     </div>
@@ -556,7 +556,7 @@ const OrderForm = ({ navigate, showToast }) => {
                     {/* Preferred Delivery Time */}
                     <div>
                         <label className='block 
-text-xs font-medium text-gray-700 mb-1'>Preferred Delivery Time</label>
+                        text-xs font-medium text-gray-700 mb-1'>Preferred Delivery Time</label>
                         <FormInput type="text" name="deliveryTime" placeholder="E.g., Tomorrow 2pm-5pm or ASAP" value={deliveryTime} onChange={(e) => setDeliveryTime(e.target.value)} required aria-label="Preferred Delivery Time" />
                     </div>
 
@@ -625,7 +625,7 @@ text-xs font-medium text-gray-700 mb-1'>Preferred Delivery Time</label>
                             value={selectedPriority}
                             onChange={(e) => setSelectedPriority(e.target.value)}
                             className="w-full p-2
-border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] bg-white text-sm"
+                            border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] bg-white text-sm"
                             aria-label="Delivery Priority"
                         >
                             <option value="standard">Standard (NGN 0)</option>
@@ -634,15 +634,15 @@ border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] bg-white tex
                  </select>
                         <p className='text-xs text-[#D4AF37] mt-1'>
                             Priority offers the fastest available shopper dispatch and delivery.
-</p>
+                        </p>
                     </div>
 
                     {/* Delivery Location Zone Select (Mandatory for Instant Pay) */}
                     <div>
                         <label className={`block text-xs font-medium text-gray-700 mb-1 ${pricingMode 
-=== 'budget' ? 'text-[#D4AF37] font-extrabold' : ''}`}>
+                            === 'budget' ? 'text-[#D4AF37] font-extrabold' : ''}`}>
                             {pricingMode === 'budget' ?
-'* Select Delivery Zone for Transport Fee' : 'Estimated Delivery Zone'}
+                            '* Select Delivery Zone for Transport Fee' : 'Estimated Delivery Zone'}
                         </label>
                         <select
                             name="deliveryLocationZone"
@@ -656,7 +656,7 @@ border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] bg-white tex
                         >
                             {Object.entries(LAGOS_TRANSPORT_FEES).map(([zone, fee]) => (
                                 <option key={zone} value={zone} 
-disabled={zone === 'select'}>
+                                    disabled={zone === 'select'}>
                                     {zone === 'select' ? '--- Select Zone ---' : `${zone} (NGN ${fee.toLocaleString()})`}
                                 </option>
                    
@@ -664,7 +664,7 @@ disabled={zone === 'select'}>
                         </select>
                         <p className='text-xs text-gray-500 mt-1'>
                             {pricingMode === 'budget' ?
-`Selected Fee: NGN ${finalCostDetails.transportFee.toLocaleString()}` : 'Fee will be confirmed by shopper.'}
+                            `Selected Fee: NGN ${finalCostDetails.transportFee.toLocaleString()}` : 'Fee will be confirmed by shopper.'}
                         </p>
                     </div>
                 </div>
@@ -672,11 +672,11 @@ disabled={zone === 'select'}>
               
                {/* Section 2: Pricing Mode */}
                 <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-[#D4AF37] pb-2">2.
-Choose Your Payment Method</h2>
+                        Choose Your Payment Method</h2>
                 {/* Reduced gap and padding */}
                 <div className="flex flex-col sm:flex-row gap-3 mb-6">
                     <label className={`flex-1 flex items-start p-3 rounded-xl cursor-pointer transition duration-200 border-2 ${pricingMode === 'budget' ?
-'bg-[#D4AF37]/10 border-[#D4AF37] ring-2 ring-[#D4AF37]/10' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
+                        'bg-[#D4AF37]/10 border-[#D4AF37] ring-2 ring-[#D4AF37]/10' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
                         <input 
                             type="radio" 
                             name="pricingMode" 
@@ -698,7 +698,7 @@ Choose Your Payment Method</h2>
                     </label>
 
                     <label className={`flex-1 flex items-start p-3 rounded-xl cursor-pointer transition duration-200 border-2 ${pricingMode === 'quote' ?
-'bg-[#D4AF37]/10 border-[#D4AF37] ring-2 ring-orange-100' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
+                            'bg-[#D4AF37]/10 border-[#D4AF37] ring-2 ring-orange-100' : 'bg-gray-50 border-gray-300 hover:bg-gray-100'}`}>
                         <input 
                             type="radio" 
                             name="pricingMode" 
@@ -722,7 +722,7 @@ Choose Your Payment Method</h2>
                 
                 {/* Section 3: Shopping List */}
                 <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-[#D4AF37] pb-2">3.
-Create Shopping List</h2>
+                    Create Shopping List</h2>
                 
                 {/* Shopping List Items */}
                 {/* Ensure shoppingList has at least one item before mapping */}
@@ -748,7 +748,7 @@ Create Shopping List</h2>
                     aria-label="Add another item to shopping list"
                 >
              
-        + Add Another Item
+                     + Add Another Item
                 </button>
                 
                 {/* Total Cost Breakdown Display */}
@@ -779,7 +779,7 @@ Create Shopping List</h2>
                             </div>
                             <div className='flex justify-between'>
                                 <span className='text-gray-700'>Transport Fee (Selected 
-Zone)</span>
+                                Zone)</span>
                                 <span className='font-semibold text-gray-800'>NGN {finalCostDetails.transportFee.toLocaleString()}</span>
                             </div>
                             {/* Priority Fee in breakdown */}
@@ -804,11 +804,11 @@ Zone)</span>
                 {/* Section 4: Additional Notes (Now less important due to item-specific notes) */}
            
                <h2 className="text-xl font-extrabold text-gray-800 mb-4 border-b-2 border-[#D4AF37] pb-2">4.
-General Notes (Optional)</h2>
+                    General Notes (Optional)</h2>
                 <textarea 
                     name="general_notes"
                     placeholder="E.g., 'Please buy the blue version of the kettle', 'If item A is unavailable, buy item B instead'."
-className="w-full p-3 border border-gray-300 rounded-lg mb-6 text-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition duration-150" rows="2"
+                    className="w-full p-3 border border-gray-300 rounded-lg mb-6 text-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition duration-150" rows="2"
                     aria-label="General Notes for the entire order"
                 ></textarea>
 
@@ -932,7 +932,7 @@ const PaymentPage = ({ navigate, initialEmail = '', initialAmount = '', showToas
 
     return (
         // Reduced padding and margin-top 
-        <div className="max-w-md mx-auto bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 mt-6" role="main" aria-label="Secure Payment Page">
+        <div className="max-w-md mx-auto bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 mt-6"  aria-label="Secure Payment Page">
             {/* Reduced h2 size, mb- and pb- */}
             <h2 className="text-2xl font-extrabold text-green-600 mb-4 border-b-2 border-green-100 pb-2 text-center">Secure Payment</h2>
             {/* Reduced mb- and text-size */}
@@ -1030,7 +1030,7 @@ transition font-semibold"
 
 // --- NEW COMPONENT: Dedicated Success Page ---
 const SuccessPage = ({ navigate }) => (
-    <div className="container mx-auto py-16 px-4 max-w-2xl min-h-[60vh] flex items-center justify-center" role="main" aria-labelledby="success-title">
+    <div className="container mx-auto py-16 px-4 max-w-2xl min-h-[60vh] flex items-center justify-center"  aria-labelledby="success-title">
         <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl text-center border-t-8 border-green-500">
             <FaCheckCircle className='text-6xl text-green-500 mx-auto mb-6' aria-hidden="true" />
             <h2 id="success-title" className="text-3xl font-extrabold text-gray-800 mb-3">
@@ -1082,7 +1082,7 @@ const ImageCarousel = () => {
     const currentImage = CAROUSEL_IMAGES[currentIndex];
 
     return (
-        <section className="relative h-[300px] sm:h-[400px] overflow-hidden" role="banner" aria-label="Promotional Image Carousel">
+        <section className="relative h-[300px] sm:h-[400px] overflow-hidden"  aria-label="Promotional Image Carousel">
             {/* Background Image with Transition */}
             <div 
                 className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out"
@@ -1093,7 +1093,7 @@ const ImageCarousel = () => {
             {/* Overlay and Content */}
             <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center text-white p-4">
                 <div className="container mx-auto relative z-10">
-                    <div className="text-5xl sm:text-6xl font-extrabold mb-3 animate-pulse" role="img" aria-label="Shopping Cart Emoji">🛒</div>
+                    <div className="text-5xl sm:text-6xl font-extrabold mb-3 animate-pulse"  aria-label="Shopping Cart Emoji">🛒</div>
                     <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">
                         Your Personal Shopper for Any Store
                     </h1>
@@ -1144,11 +1144,11 @@ const IntroScreen = ({ onFinish }) => {
         <div 
             className="fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-500 ease-in-out"
             style={{ opacity }}
-            role="dialog" // Changed to role="dialog" for a non-modal intro
+             // Changed to role="dialog" for a non-modal intro
             aria-label="Welcome Splash Screen"
         >
             <div className="text-center">
-                <div className="text-8xl mb-4 animate-bounce" role="img" aria-label="Honey Pot Emoji">🍯</div>
+                <div className="text-8xl mb-4 animate-bounce"  aria-label="Honey Pot Emoji">🍯</div>
                 <h1 className="text-4xl font-extrabold text-[#D4AF37]">Honey<span className='text-white'>Shopper</span></h1>
             </div>
         </div>
@@ -1186,7 +1186,7 @@ const TestimonialsSection = () => (
                     <div 
                         key={index} 
                         className="bg-white p-6  border-b-2 border-[#D4AF37] hover:shadow-sm transition duration-300 transform hover:scale-[1.02] relative"
-                        role="testimonial"
+                        
                     >
                         <blockquote className="italic text-gray-600 mb-4 text-base">
                             "{t.quote}"
@@ -1255,7 +1255,7 @@ const FAQPage = () => {
     ];
 
     return (
-        <div className="container mx-auto py-12 px-4 max-w-4xl min-h-[60vh]" role="main" aria-labelledby="faq-title">
+        <div className="container mx-auto py-12 px-4 max-w-4xl min-h-[60vh]"  aria-labelledby="faq-title">
             <h2 id="faq-title" className="text-3xl font-extrabold text-center text-gray-800 mb-6 border-b-2 border-[#D4AF37] inline-block mx-auto pb-2">
                 Frequently Asked Questions
             </h2>
@@ -1273,7 +1273,7 @@ const FAQPage = () => {
 
 // --- NEW COMPONENT: Dedicated Legal Page ---
 const LegalPage = () => (
-    <div className="container mx-auto py-12 px-4 max-w-4xl min-h-[60vh]" role="main" aria-labelledby="legal-title">
+    <div className="container mx-auto py-12 px-4 max-w-4xl min-h-[60vh]"  aria-labelledby="legal-title">
         <h2 id="legal-title" className="text-3xl font-extrabold text-center text-gray-800 mb-6 border-b-2 border-[#D4AF37] inline-block mx-auto pb-2">
             Terms of Service & Privacy Policy
         </h2>
@@ -1553,7 +1553,7 @@ export default function MarketShopperApp() {
             {showIntro && <IntroScreen onFinish={setShowIntro} />}
 
             {/* Header Section (Logo only - reduced vertical padding) */}
-            <header className="bg-white  sticky top-0 z-20" role="navigation" aria-label="Main Navigation">
+            <header className="bg-white  sticky top-0 z-20"  aria-label="Main Navigation">
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
                 
                     {/* Logo (Reduced text size) */}
