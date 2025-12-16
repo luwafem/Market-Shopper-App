@@ -1607,7 +1607,7 @@ export default function MarketShopperApp() {
             />
             
             {/* Footer Section (Updated for future links) */}
-            <footer className="bg-white text-black py-8 mt-6" role="contentinfo">
+            <footer className="bg-white text-black py-8 mt-6" >
                 
                 <div className="container mx-auto text-center px-4">
 
